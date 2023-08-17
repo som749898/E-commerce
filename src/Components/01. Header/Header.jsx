@@ -1,5 +1,6 @@
-import { FaHeart,FaShoppingCart} from "react-icons/fa";
+import { FaShoppingCart} from "react-icons/fa";
 import { BsFillPersonFill,BsFillHandbagFill,BsSearch } from "react-icons/bs";
+import { AiOutlineHeart } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 import "./Header.css"
@@ -16,7 +17,7 @@ export const Header = () => {
       </div>
       <div className="header-icon">
         <NavLink to="/wishlist">
-          <FaHeart className="wishlist" />
+          <AiOutlineHeart className="wishlist" />
         </NavLink>
         <NavLink to="/cart">
           <FaShoppingCart className="cart" />

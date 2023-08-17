@@ -1,0 +1,156 @@
+.download {
+  display: flex;
+  background-color: #f0f0f0;
+  justify-content: space-between;
+  padding: 40px;
+  text-align: left;
+}
+
+.download img {
+  width: 532px;
+  height: 314px;
+  border-radius: 12px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin-right: 80px;
+}
+
+.download .text {
+  max-width: 600px;
+  margin-left: 80px;
+}
+
+.download .text .heading {
+  color: #030303;
+  font-size: 24px;
+  font-family: "Poppins";
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+
+.download .text .content {
+  color: #030303;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 30px;
+}
+
+.download .logo-container {
+  margin-top: 50px;
+  display: flex;
+  gap: 40px;
+}
+
+.download .logo {
+  color: white;
+  background-color: #0f0f0f;
+  border-radius: 12px;
+  display: flex;
+  padding: 6px 8px;
+}
+
+.download .download-logo {
+  font-size: 35px;
+  margin-right: 5px;
+}
+
+.download .download-text {
+  font-size: 14px;
+}
+
+.download .download-source {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Footer stlying */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  text-align: left;
+}
+
+.footer-left .app-logo {
+  color: #0f0f0f;
+  font-size: 24px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 32px;
+  display: flex;
+}
+
+.app-logo .cart-logo {
+  font-size: 28px;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+.footer-left .footer-content {
+  color: #0f0f0f;
+  font-size: 14px;
+  font-family: "Poppins";
+  line-height: 18px;
+  margin: 10px 0px;
+}
+
+.footer-left .footer-website {
+  color: #0f0f0f;
+  font-size: 20px;
+  font-family: "Poppins";
+  font-weight: 700;
+  line-height: 26px;
+  margin: 10px 0px;
+  margin-bottom: 20px;
+}
+
+.footer-left .footer-logo {
+  font-size: 24px;
+  top: 1643px;
+  left: 104px;
+  width: 24px;
+  height: 24px;
+  color: #0f0f0f;
+  margin-right: 15px;
+}
+
+.footer-right .text-1 {
+  color: #0f0f0f;
+  font-size: 12px;
+  font-family: "Poppins";
+  line-height: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-right .text-2 {
+  color: #0f0f0f;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+.footer-helpline {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.footer-helpline .helpline-logo {
+  font-size: 24px;
+  margin-right: 7px;
+}
+
+.footer-helpline .helpline-text {
+  color: #0f0f0f;
+  font-size: 20px;
+  font-family: "Poppins";
+  font-weight: 700;
+  line-height: 26px;
+}

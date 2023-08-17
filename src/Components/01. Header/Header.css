@@ -30,20 +30,20 @@
   border-radius: 8px;
   border: none;
   background-color: rgba(255,255,255,0.8);
-  color: #000000;
+  padding-left: 30px;
 }
 
 .homepage-header input::placeholder {
   color: #000000;
   padding: 5px 10px;
-  padding-left: 30px;
   font-weight: 500;
+  border: none;
 }
 
 .header-search .search-icon {
   position: absolute;
-  bottom: 17px;
-  left: 10px;
+  bottom: 22px;
+  left: 12px;
   font-size: 13px;
   font-weight: bold;
 }
@@ -58,6 +58,11 @@
 
 .header-icon .wishlist, .header-icon .cart, .header-icon .profile {
   color: #ffffff;
+}
+
+.header-icon .wishlist{
+  font-weight: 700;
+  font-size: 31px;
 }
 
 .header-icon .cart {
