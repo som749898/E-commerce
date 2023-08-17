@@ -1,7 +1,5 @@
-import { FaHeart,FaShoppingCart} from "react-icons/fa";
-import { BsFillPersonFill } from "react-icons/bs";
-
 import "./HomePage.css"
+import { Header } from "../../Components/01. Header/Header"
 
 export const HomePage = () => {
   const getProduct = async () => {
@@ -13,15 +11,7 @@ export const HomePage = () => {
     }
   }
   return <div>
-    <h1 onClick={getProduct}>Home Page</h1>
-    <header>
-      <h1>BookBazaar</h1>
-      <input type="text" placeholder="Search for books" />
-      <div>
-      <FaHeart />
-      <FaShoppingCart/>
-      <BsFillPersonFill/>
-      </div>
-    </header>
+    {/* <h1 onClick={getProduct}>Home Page</h1> */}
+    <Header/>
   </div>
 }
