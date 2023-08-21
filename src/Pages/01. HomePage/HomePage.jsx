@@ -1,9 +1,9 @@
 import { useContext } from "react"
 
+import { BookContext } from "../../Context/BookContext"
 import "./HomePage.css"
 import { Header } from "../../Components/01. Header/Header"
 import { Footer } from "../../Components/02. Footer/Footer"
-import { BookContext } from "../../Context/BookContext"
 
 import coverImage from "../../Images/02. coverImage.jpeg"
 import {BookImage} from "../../Utility/CategoryImage";

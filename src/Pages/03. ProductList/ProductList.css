@@ -1,0 +1,299 @@
+/* offer */
+
+.offer {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  padding: 40px 70px;
+}
+
+.offer .offer-img {
+  width: 412px;
+  height: 123px;
+  border-radius: 12px;
+}
+
+.offer-left .text-1, .offer-left .text-2 {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.text-1 .arrow {
+  font-size: 22px;
+  color: #7e7e7e;
+  margin-right: 5px;
+}
+
+.text-1 .arrow-text {
+  color: #7e7e7e;
+  font-weight: 600;
+}
+
+.text-2 .bookmark {
+  color: #1c1c1c;
+  font-size: 32px;
+}
+
+.text-2 .bookmark-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  margin-right: 10px;
+}
+
+.text-2 .title {
+  color: #030303;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.offer-desc {
+  display: flex;
+}
+
+.text-2 .desc {
+  display: flex;
+  margin-right: 15px;
+}
+
+.desc .offer-logo {
+  font-size: 20px;
+  color: #030303;
+  margin-right: 5px;
+}
+
+.desc .desc-text {
+  color: #030303;
+  font-size: 16px; 
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.desc .tag , .desc .car {
+  margin-top: 2px;
+}
+
+/* product sorting */
+.product-sorting {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 70px;
+  padding-bottom: 0px;
+}
+
+.product-sorting .reset {
+  width: 88px;
+  height: 46px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: #1c1c1e;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 22px;
+  outline: none;
+  cursor: pointer;
+}
+
+.product-sorting .sort {
+  width: 220px;
+  height: 46px;
+  padding: 0px 8px;
+  border: 1px solid #d9d9de;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.86);
+  color: #1c1c1e;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 22px;
+  outline: none;
+}
+
+/* Product lisitng */
+
+.product-filter {
+  align-self: flex-start;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  text-align: left;
+  width: 336px;
+  padding: 22px;
+}
+
+/* Style the input range slider */
+.product-filter .slider {
+  appearance: none;
+  width: 288px;
+  height: 1px;
+  background-color: #d9d9de; /* Runnable track color */
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 30px;
+}
+
+/* Style the thumb */
+.product-filter .slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background-color: #1c1c1e; /* Thumb color */
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -1px; /* Adjust to center the thumb vertically */
+}
+
+/* Style the active track */
+.product-filter .slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: #1c1c1e; /* Thumb color */
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -6px; /* Adjust to center the thumb vertically */
+}
+
+.product-filter .slider::-webkit-slider-runnable-track {
+  width: 100%;
+  background-color: #d9d9de; /* Runnable track color */
+  border-radius: 5px;
+  position: relative;
+}
+
+.product-filter .slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background-color: #d9d9de; /* Runnable track color */
+  border-radius: 5px;
+  position: relative;
+}
+
+.product-filter .slider::-webkit-slider-thumb::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1c1c1e; /* Active track color */
+  border-radius: 5px;
+  z-index: -1;
+}
+
+.product-filter .slider::-moz-range-progress {
+  background-color: #1c1c1e; /* Active track color */
+  border-radius: 5px;
+}
+
+
+.product-filter .range-text {
+  display: flex;
+  gap: 20px;
+}
+
+.product-filter .range1, .product-filter .range2 {
+    padding: 8px 16px;
+    width: 100%;
+    border: 1px solid #d9d9de;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.86);
+    color: #1c1c1e;
+    font-size: 14px;
+    font-family: "Poppins";
+    line-height: 18px;
+    outline: none;
+}
+
+.price .price-text {
+  color: #030303;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 700;
+  line-height: 22px;
+  margin-bottom: 7px;
+}
+
+/* product listing styling */
+
+.product-listing {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  padding: 40px 70px;
+}
+
+.filter .filter-text {
+  color: #030303;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 700;
+  line-height: 22px;
+  margin-bottom: 7px;
+}
+
+.filter .filter-content {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.filter .radio-style {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #1c1c1e;
+  box-sizing: border-box;
+  border-radius: 12px;
+  color: #1c1c1e;
+  background-color: #ffffff;
+  margin-right: 5px;
+  margin-top: 6px;
+}
+
+.filter .filter-name {
+  color: #030303;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 500;
+}
+
+.filter .filter-btn {
+  padding: 5px 10px;
+  border: 1px solid #1c1c1e;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: none;
+  color: #1c1c1e;
+  font-size: 12px;
+  font-family: "Poppins";
+  font-weight: 500;
+  outline: none;
+  margin-bottom: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.filter-sort {
+  margin-top: 30px;
+}
+
+/* Book product listing */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 70px;
+  align-items: flex-start;
+}

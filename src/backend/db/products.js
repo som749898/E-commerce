@@ -1,5 +1,7 @@
 import { v4 as uuid } from "uuid";
 
+import { BookImage } from "../../Utility/BookImage"
+
 /**
  * Product Database can be added here.
  * You can add products of your wish with different attributes
@@ -13,13 +15,14 @@ export const products = [
     description: "A classic novel depicting the decadence of the Jazz Age.",
     price: 12.99,
     category: "Fiction",
-    coverImage: "cover1.jpg",
+    coverImage: BookImage[0],
     ratings: 4.5,
-    language: "English",
+    inStock: false,
     publisher: "Scribner",
     publishedYear: 1925,
     pages: 180,
-    isbn: "978-0-7432-7356-5"
+    bestseller: true,
+    review: 106
   },
   {
     _id: uuid(),
@@ -28,13 +31,14 @@ export const products = [
     description: "A compelling story dealing with racial injustice and moral growth.",
     price: 10.99,
     category: "Fiction",
-    coverImage: "cover2.jpg",
+    coverImage: BookImage[1],
     ratings: 4.8,
-    language: "English",
+    inStock: true,
     publisher: "HarperCollins",
     publishedYear: 1960,
     pages: 336,
-    isbn: "978-0-06-112008-4"
+    bestseller: false,
+    review: 48
   },
   {
     _id: uuid(),
@@ -43,13 +47,14 @@ export const products = [
     description: "A dystopian novel exploring the dangers of totalitarianism.",
     price: 9.99,
     category: "Science Fiction",
-    coverImage: "cover3.jpg",
+    coverImage: BookImage[2],
     ratings: 4.6,
-    language: "English",
+    inStock: true,
     publisher: "Secker & Warburg",
     publishedYear: 1949,
     pages: 328,
-    isbn: "978-0-452-28423-4"
+    bestseller: false,
+    review: 95
   },
   {
     _id: uuid(),
@@ -58,13 +63,14 @@ export const products = [
     description: "A classic novel of love, manners, and misunderstandings in 19th-century England.",
     price: 8.99,
     category: "Romance",
-    coverImage: "cover21.jpg",
+    coverImage: BookImage[3],
     ratings: 4.7,
-    language: "English",
+    inStock: true,
     publisher: "T. Egerton, Whitehall",
     publishedYear: 1813,
     pages: 432,
-    isbn: "978-0-14-143951-8"
+    bestseller: false,
+    review: 465
   },
   {
     _id: uuid(),
@@ -73,13 +79,14 @@ export const products = [
     description: "A fantasy adventure novel set in Middle-earth, preceding The Lord of the Rings.",
     price: 11.49,
     category: "Fantasy",
-    coverImage: "cover22.jpg",
+    coverImage: BookImage[4],
     ratings: 4.9,
-    language: "English",
+    inStock: true,
     publisher: "Allen & Unwin",
     publishedYear: 1937,
     pages: 310,
-    isbn: "978-0-261-10217-3"
+    bestseller: false,
+    review: 892
   },
   {
     _id: uuid(),
@@ -88,13 +95,14 @@ export const products = [
     description: "A novel following the experiences of Holden Caulfield, a disenchanted teenager.",
     price: 9.99,
     category: "Fiction",
-    coverImage: "cover23.jpg",
+    coverImage: BookImage[5],
     ratings: 4.3,
-    language: "English",
+    inStock: true,
     publisher: "Little, Brown and Company",
     publishedYear: 1951,
     pages: 234,
-    isbn: "978-0-316-76947-6"
+    bestseller: false,
+    review: 165
   },
   {
     _id: uuid(),
@@ -103,13 +111,14 @@ export const products = [
     description: "A philosophical novel about a shepherd named Santiago and his journey to find treasure.",
     price: 14.99,
     category: "Adventure",
-    coverImage: "cover31.jpg",
+    coverImage: BookImage[6],
     ratings: 4.6,
-    language: "English",
+    inStock: false,
     publisher: "HarperOne",
     publishedYear: 1988,
     pages: 208,
-    isbn: "978-0-06-112241-5"
+    bestseller: true,
+    review: 423
   },
   {
     _id: uuid(),
@@ -118,13 +127,14 @@ export const products = [
     description: "A thriller centered around a symbologist's quest to unravel hidden mysteries.",
     price: 12.49,
     category: "Thriller",
-    coverImage: "cover32.jpg",
+    coverImage: BookImage[7],
     ratings: 4.2,
-    language: "English",
+    inStock: true,
     publisher: "Doubleday",
     publishedYear: 2003,
     pages: 454,
-    isbn: "978-0-385-50420-8"
+    bestseller: false,
+    review: 83
   },
   {
     _id: uuid(),
@@ -133,13 +143,14 @@ export const products = [
     description: "The first book in the Harry Potter series, introducing the magical world of Hogwarts.",
     price: 10.99,
     category: "Fantasy",
-    coverImage: "cover33.jpg",
+    coverImage: BookImage[8],
     ratings: 4.8,
-    language: "English",
+    inStock: true,
     publisher: "Bloomsbury",
     publishedYear: 1997,
     pages: 309,
-    isbn: "978-0-7475-3269-6"
+    bestseller: true,
+    review: 589
   },
   {
     _id: uuid(),
@@ -148,13 +159,14 @@ export const products = [
     description: "A dystopian novel set in a post-apocalyptic world where teenagers are forced to fight to the death.",
     price: 9.99,
     category: "Science Fiction",
-    coverImage: "cover38.jpg",
+    coverImage: BookImage[9],
     ratings: 4.5,
-    language: "English",
+    inStock: true,
     publisher: "Scholastic",
     publishedYear: 2008,
     pages: 374,
-    isbn: "978-0-439-02352-8"
+    bestseller: false,
+    review: 753
   },
   {
     _id: uuid(),
@@ -163,13 +175,14 @@ export const products = [
     description: "A futuristic novel exploring a society driven by technological advancements and conformity.",
     price: 11.99,
     category: "Science Fiction",
-    coverImage: "cover39.jpg",
+    coverImage: BookImage[10],
     ratings: 4.1,
-    language: "English",
+    inStock: false,
     publisher: "Chatto & Windus",
     publishedYear: 1932,
     pages: 311,
-    isbn: "978-0-06-085052-4"
+    bestseller: false,
+    review: 951
   },
   {
     _id: uuid(),
@@ -178,13 +191,14 @@ export const products = [
     description: "The first part of the epic fantasy trilogy set in Middle-earth.",
     price: 13.49,
     category: "Fantasy",
-    coverImage: "cover40.jpg",
+    coverImage: BookImage[11],
     ratings: 4.9,
-    language: "English",
+    inStock: true,
     publisher: "Allen & Unwin",
     publishedYear: 1954,
     pages: 423,
-    isbn: "978-0-261-10228-9"
+    bestseller: false,
+    review: 456
   },
   {
     _id: uuid(),
@@ -193,13 +207,14 @@ export const products = [
     description: "A classic fantasy novel about siblings who discover a magical land through a wardrobe.",
     price: 8.99,
     category: "Fantasy",
-    coverImage: "cover42.jpg",
+    coverImage: BookImage[12],
     ratings: 4.7,
-    language: "English",
+    inStock: true,
     publisher: "Geoffrey Bles",
     publishedYear: 1950,
     pages: 206,
-    isbn: "978-0-06-076545-1"
+    bestseller: true,
+    review: 754
   },
   {
     _id: uuid(),
@@ -208,13 +223,14 @@ export const products = [
     description: "A powerful novel set in Afghanistan, exploring friendship, redemption, and the impact of choices.",
     price: 10.49,
     category: "Drama",
-    coverImage: "cover43.jpg",
+    coverImage: BookImage[13],
     ratings: 4.6,
-    language: "English",
+    inStock: true,
     publisher: "Riverhead Books",
     publishedYear: 2003,
     pages: 371,
-    isbn: "978-1-57322-245-7"
+    bestseller: false,
+    review: 159
   },
   {
     _id: uuid(),
@@ -223,12 +239,109 @@ export const products = [
     description: "A psychological horror novel about a family's chilling experiences in a haunted hotel.",
     price: 9.99,
     category: "Horror",
-    coverImage: "cover44.jpg",
+    coverImage: BookImage[14],
     ratings: 4.3,
-    language: "English",
+    inStock: false,
     publisher: "Doubleday",
     publishedYear: 1977,
     pages: 447,
-    isbn: "978-0-385-12167-5"
-  }
+    bestseller: false,
+    review: 357
+  },
+  {
+    _id: uuid(),
+    title: "The Girl on the Train",
+    author: "Paula Hawkins",
+    description: "A psychological thriller revolving around a woman's observations on her daily train commute.",
+    price: 11.99,
+    category: "Fiction",
+    coverImage: BookImage[15],
+    ratings: 4.0,
+    inStock: true,
+    publisher: "Riverhead Books",
+    publishedYear: 2015,
+    pages: 336,
+    bestseller: false,
+    review: 42
+  },
+  {
+    _id: uuid(),
+    title: "The Martian",
+    author: "Andy Weir",
+    description: "An adventure novel about an astronaut's struggle to survive on Mars after being stranded by his crew.",
+    price: 10.49,
+    category: "Science Fiction",
+    coverImage: BookImage[16],
+    ratings: 4.7,
+    inStock: true,
+    publisher: "Crown Publishing Group",
+    publishedYear: 2011,
+    pages: 369,
+    bestseller: true,
+    review: 86
+  },
+  {
+    _id: uuid(),
+    title: "Gone Girl",
+    author: "Gillian Flynn",
+    description: "A suspenseful mystery revolving around the mysterious disappearance of a woman and the secrets that unravel.",
+    price: 9.99,
+    category: "Thriller",
+    coverImage: BookImage[17],
+    ratings: 4.4,
+    inStock: true,
+    publisher: "Crown Publishing Group",
+    publishedYear: 2012,
+    pages: 432,
+    bestseller: false,
+    review: 57
+  },
+  {
+    _id: uuid(),
+    title: "The Fault in Our Stars",
+    author: "John Green",
+    description: "A heartwarming novel following two teenagers who meet at a cancer support group and fall in love.",
+    price: 8.99,
+    category: "Fantasy",
+    coverImage: BookImage[18],
+    ratings: 4.5,
+    inStock: true,
+    publisher: "Dutton Books",
+    publishedYear: 2012,
+    pages: 313,
+    bestseller: false,
+    review: 68
+  },
+  {
+    _id: uuid(),
+    title: "The Girl with the Dragon Tattoo",
+    author: "Stieg Larsson",
+    description: "A mystery novel featuring a journalist and a hacker as they investigate a decades-old disappearance.",
+    price: 12.99,
+    category: "Thriller",
+    coverImage: BookImage[19],
+    ratings: 4.2,
+    inStock: false,
+    publisher: "Norstedts Förlag",
+    publishedYear: 2005,
+    pages: 672,
+    bestseller: false,
+    review: 258
+  },
+  {
+    _id: uuid(),
+    title: "The Road",
+    author: "Cormac McCarthy",
+    description: "A post-apocalyptic novel following a father and son's journey to survive in a desolate world.",
+    price: 9.49,
+    category: "Science Fiction",
+    coverImage: BookImage[20],
+    ratings: 4.1,
+    inStock: true,
+    publisher: "Alfred A. Knopf",
+    publishedYear: 2006,
+    pages: 241,
+    bestseller: true,
+    review: 369
+  }  
 ];
