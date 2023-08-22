@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import {BookProvider} from "./Context/BookContext";
+import {PaginateProvider} from "./Context/PaginateContext";
 
 // Call make Server
 makeServer();
@@ -14,7 +15,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <BookProvider>
-        <App />
+        <PaginateProvider>
+          <App />
+        </PaginateProvider>
       </BookProvider>
     </Router>
   </React.StrictMode>,

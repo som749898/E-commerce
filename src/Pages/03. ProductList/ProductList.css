@@ -235,6 +235,7 @@
   justify-content: space-between;
   text-align: left;
   padding: 40px 70px;
+  align-items: flex-start;
 }
 
 .filter .filter-text {
@@ -296,4 +297,43 @@
   flex-wrap: wrap;
   padding-left: 70px;
   align-items: flex-start;
+}
+
+/* product pages */
+.page-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 20px 0px;
+  margin-bottom: 70px;
+}
+
+.page-number .single-pg {
+  height: 27px;
+  width: 30px;
+  font-family: "Poppins";
+  font-weight: 500;
+  background-color: black;
+  color: #f0f0f0;
+  cursor: pointer;
+  border: none;
+  padding-top: 1.5px;
+}
+
+.page-number button {
+  height: 27px;
+  font-family: "Poppins";
+  font-weight: 500;
+  background-color: black;
+  color: #f0f0f0;
+  cursor: pointer;
+  border: none;
+  font-size: 12px;
+}
+
+.page-number .pg-active {
+  border: 1px solid black;
+  background-color: #f0f0f0;
+  color: black;
 }

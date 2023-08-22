@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { NavLink } from "react-router-dom"
 
 import { BookContext } from "../../Context/BookContext"
 import "./HomePage.css"
@@ -19,7 +20,9 @@ export const HomePage = () => {
       <div className="overlay">
         <h1>For All Your</h1>
         <h1>Reading Needs</h1>
-        <button>SHOP NOW</button>
+        <NavLink to="/products">
+          <button>SHOP NOW</button>
+        </NavLink>
       </div>
     </div>
     <div className="category">

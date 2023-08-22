@@ -1,10 +1,12 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useRef } from "react"
 import { BsArrowLeft, BsFillBookmarkFill,BsFillHandbagFill,BsFillTagFill } from "react-icons/bs";
 import {FaCarSide} from "react-icons/fa";
 import {AiOutlineDown} from "react-icons/ai";
 
 import { BookContext } from "../../Context/BookContext"
+import { PaginateContext } from "../../Context/PaginateContext";
 import { Header } from "../../Components/01. Header/Header"
+import { Footer } from "../../Components/02. Footer/Footer";
 import "./ProductList.css"
 import { BookCard } from "../../Components/03. BookCard/BookCard";
 import image from "../../Images/05. Introduction.png"
@@ -22,6 +24,23 @@ export const ProductList = () => {
   const {state} = useContext(BookContext);
   const allCategory = [...new Set(state.data.map(item => item.category))];
   const allAuthor = [...new Set(state.data.map(item => item.author))];
+
+  const {paginateState,paginateDispatch} = useContext(PaginateContext);
+
+  const setActive = (item) => {
+    return item === paginateState.currentPage ? "pg-active" : ""
+  }
+
+  const targetRef = useRef(null);
+
+  const scrollToTarget = () => {
+    if (targetRef.current) {
+      window.scrollTo({
+        top: targetRef.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
   return <div>
     <Header/>
     <div className="offer">
@@ -67,7 +86,7 @@ export const ProductList = () => {
       </select>
     </div>
     {/* Product listing */}
-    <div className="product-listing">
+    <div className="product-listing" ref={targetRef} id="target-section">
       <div className="product-filter">
         <div className="price">
           <div className="price-text">Price range</div>
@@ -134,11 +153,19 @@ export const ProductList = () => {
           </label>
         </div>
       </div>
-      <div className="product-list">
-        {
-          state.data.map(item => <BookCard item={item} />)
-        }
-      </div>
+        <div className="product-list">
+          {
+            paginateState.books.map(item => <BookCard item={item} />)
+          }
+        </div>
     </div>
+    <div className="page-number">
+      <button onClick={() => {paginateDispatch({type: "PREV"}); scrollToTarget();}}>Previous</button>
+      {
+        paginateState.pages.map(item => <div className={`single-pg ${setActive(item)}`} onClick={() =>{ paginateDispatch({type: "PAGINATE", payload: item}); scrollToTarget(); } }>{item}</div>)
+      }
+      <button onClick={() => {paginateDispatch({type: "NEXT"}); scrollToTarget();}}>Next</button>
+    </div>
+    <Footer/>
   </div>
 }
