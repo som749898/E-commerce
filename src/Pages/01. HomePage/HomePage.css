@@ -41,6 +41,10 @@
   margin-top: 80px;
 }
 
+.overlay button:hover {
+  background-color: #d0d0d0;
+}
+
 .homepage-category {
   display: flex;
   flex-wrap: wrap;

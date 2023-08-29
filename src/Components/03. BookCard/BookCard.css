@@ -25,7 +25,7 @@
 }
 
 .book-card .book-wishlist {
-  position: relative;
+  position: absolute;
   top: 10px;
   left: 10px;
   font-size: 24px;
@@ -110,6 +110,10 @@
   
   display: block;
   margin: 10px auto;
+}
+
+.book-card .book-btn:hover {
+  background-color: #49494e;
 }
 
 .outOfStock {

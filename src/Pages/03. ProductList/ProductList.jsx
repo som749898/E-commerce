@@ -45,9 +45,11 @@ export const ProductList = () => {
     <Header/>
     <div className="offer">
       <div className="offer-left">
-        <NavLink to="/" className="text-1">
-          <BsArrowLeft className="arrow"/>
-          <p className="arrow-text">Back to home</p>
+        <NavLink to="/">
+          <div className="text-1">
+            <BsArrowLeft className="arrow"/>
+            <p className="arrow-text">Back to home</p>
+          </div>
         </NavLink>
         <div className="text-2">
           <div className="bookmark-bg">

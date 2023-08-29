@@ -30,6 +30,10 @@
   font-weight: 600;
 }
 
+.text-1 .arrow-text:hover {
+  color: black;
+}
+
 .text-2 .bookmark {
   color: #1c1c1c;
   font-size: 32px;
@@ -106,6 +110,11 @@
   line-height: 22px;
   outline: none;
   cursor: pointer;
+}
+
+.product-sorting .reset:hover {
+  background-color: #49494e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .product-sorting .sort {
@@ -321,6 +330,11 @@
   padding-top: 1.5px;
 }
 
+.page-number .single-pg:hover {
+  background-color: #49494e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .page-number button {
   height: 27px;
   font-family: "Poppins";
@@ -332,7 +346,18 @@
   font-size: 12px;
 }
 
+.page-number button:hover {
+  background-color: #49494e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .page-number .pg-active {
+  border: 1px solid black;
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.page-number .pg-active:hover {
   border: 1px solid black;
   background-color: #f0f0f0;
   color: black;

@@ -120,6 +120,10 @@
   margin-right: 15px;
 }
 
+.footer-left .footer-logo:hover {
+  color: #696969;
+}
+
 .footer-right .text-1 {
   color: #0f0f0f;
   font-size: 12px;

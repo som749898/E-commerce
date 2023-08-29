@@ -109,6 +109,11 @@
   cursor: pointer;
 }
 
+.book-detail .book-cart:hover {
+  background-color: #49494e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .book-detail .book-wishlist {
   display: block;
   margin: auto;
@@ -120,4 +125,8 @@
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
+}
+
+.book-detail .book-wishlist:hover {
+  background-color: #f0f0f061;
 }

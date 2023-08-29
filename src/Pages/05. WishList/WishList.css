@@ -1,0 +1,11 @@
+.wishlist-header {
+  margin: 40px 0px;
+  font-size: 48px;
+}
+
+.wishlist-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 70px;
+  align-items: flex-start;
+}

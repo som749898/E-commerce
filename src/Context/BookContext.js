@@ -4,14 +4,17 @@ export const BookContext = createContext();
 
 const reducerFunction = (state, action) => {
   switch(action.type) {
-    case "LOAD_DATA": return {...state,data: action.payload}
+    case "LOAD_DATA": return {...state,data: action.payload, 
+      // wishlist: action.payload.slice(0,10)
+    }
     default: return state;
   }
 }
 
 export const BookProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducerFunction, {
-    data: []
+    data: [],
+    wishlist: []
   })
 
   const getProduct = async () => {

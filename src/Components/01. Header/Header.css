@@ -60,6 +60,10 @@
   color: #ffffff;
 }
 
+.header-icon .wishlist:hover, .header-icon .cart:hover, .header-icon .profile:hover {
+  color: #d0d0d0;
+}
+
 .header-icon .wishlist{
   font-weight: 700;
   font-size: 31px;
