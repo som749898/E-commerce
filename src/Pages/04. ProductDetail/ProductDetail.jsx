@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { AiFillStar, AiFillThunderbolt } from "react-icons/ai";
 import { BsFillTagFill } from "react-icons/bs";
@@ -10,9 +10,39 @@ import { Header } from "../../Components/01. Header/Header"
 
 export const ProductDetail = () => {
   const {id} = useParams();
-  const {state} = useContext(BookContext);
+  const {state, dispatch} = useContext(BookContext);
   const selectedProduct = state.data.find(item => item._id.toString() === id);
-  console.log("book", selectedProduct);
+
+  const addToCart = async () => {
+    const encodedToken = localStorage.getItem("token");
+    const body = {
+      "product": selectedProduct
+    }
+    const cart = await fetch('/api/user/cart', {
+      method: "POST",
+      headers: {
+        "authorization": encodedToken,
+      },
+      body: JSON.stringify(body)
+    }).then(res => res.json());
+    dispatch({type: "ADD_CART", payload: cart.cart})
+  }
+
+  const addToWishlist = async () => {
+    const encodedToken = localStorage.getItem("token");
+    const data = {
+      "product": selectedProduct
+    }
+    const addWishlistitem = await fetch("/api/user/wishlist", {
+      method: "POST",
+      headers: {
+        "authorization": encodedToken,
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+    dispatch({type: "ADD_WISHLIST", payload: addWishlistitem});
+  }
+  
   return <div>
     <Header/>
     <div className="book-center">
@@ -66,8 +96,16 @@ export const ProductDetail = () => {
               <span className="book-blue">{selectedProduct.publisher}</span>
             </div>
           </div>
-          <button className="book-cart">Add to Cart</button>
-          <button className="book-wishlist">Add to Wishlist</button>
+          {
+          state.cart.find(cart => cart._id === selectedProduct._id) ? <NavLink to="/cart">
+          <button className="book-cart">Go to Cart</button>
+          </NavLink> : <button onClick={addToCart} className="book-cart">Add to Cart</button>
+          }
+          {
+          state.wishlist.find(wishlist => wishlist._id === selectedProduct._id) ? <NavLink to="/wishlist">
+          <button className="book-wishlist">Go to Wishlist</button>
+          </NavLink> : <button onClick={addToWishlist} className="book-wishlist">Add to Wishlist</button>
+          }
         </div>
     </div>
     </div>
