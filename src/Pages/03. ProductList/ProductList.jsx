@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from "react"
+import { useContext, useState, useRef, useEffect } from "react"
 import { BsArrowLeft, BsFillBookmarkFill,BsFillHandbagFill,BsFillTagFill } from "react-icons/bs";
 import {FaCarSide} from "react-icons/fa";
 import {AiOutlineDown} from "react-icons/ai";
@@ -10,7 +10,7 @@ import { Footer } from "../../Components/02. Footer/Footer";
 import "./ProductList.css"
 import { BookCard } from "../../Components/03. BookCard/BookCard";
 import image from "../../Images/05. Introduction.png"
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 export const ProductList = () => {
   const [authorEnd, setAuthorEnd] = useState(4);
@@ -21,7 +21,7 @@ export const ProductList = () => {
   const loadMoreCategory = () => {
     return categoryEnd < allCategory.length ? setCategoryEnd(prev => prev +4) : setCategoryEnd(allCategory.length)
   }
-  const {state} = useContext(BookContext);
+  const {state, filterState,filterDispatch, searchDispatch} = useContext(BookContext);
   const allCategory = [...new Set(state.data.map(item => item.category))];
   const allAuthor = [...new Set(state.data.map(item => item.author))];
 
@@ -41,6 +41,21 @@ export const ProductList = () => {
       });
     }
   };
+
+  const btnReset = () => {
+    filterDispatch({type: "RESET"});
+    setAuthorEnd(4);
+    setCategoryEnd(4);
+    searchDispatch({type: "RESET"});
+  }
+
+  const {categorySelected} = useParams();
+
+  useEffect(() => {
+    categorySelected !== undefined && filterDispatch({type: "SELECTED_CATEGORY",payload: categorySelected });
+    // eslint-disable-next-line
+  },[categorySelected])
+
   return <div>
     <Header/>
     <div className="offer">
@@ -80,11 +95,11 @@ export const ProductList = () => {
     </div>
     {/* Product sorting */}
     <div className="product-sorting">
-      <button className="reset">Reset</button>
-      <select className="sort">
-        <option>Sortby: Most Popular<AiOutlineDown/></option>
-        <option>Sortby: Price</option>
-        <option>Sortby: Rating</option>
+      <button onClick={btnReset} className="reset">Reset</button>
+      <select value={filterState.sort} onChange={(e) => filterDispatch({type: "SORT", payload: e.target.value})} className="sort">
+        <option value="sortByPopular">Sortby: Most Popular<AiOutlineDown/></option>
+        <option value="sortByPrice">Sortby: Price</option>
+        <option value="sortbyRating">Sortby: Rating</option>
       </select>
     </div>
     {/* Product listing */}
@@ -93,17 +108,17 @@ export const ProductList = () => {
         <div className="price">
           <div className="price-text">Price range</div>
           <div className="range-text">
-            <div className="range1">&#8377;0.00</div>
-            <div className="range2">&#8377;0.00</div>
+            <div className="range1">${Math.round(filterState.minPrice) || 0}</div>
+            <div className="range2">$15</div>
           </div>
-          <input type="range" className="slider" min="0" max="100" />
+          <input onChange={(e) => filterDispatch({type: "SET_RANGE", payload: e.target.value})} type="range" className="slider" min="0" max="100" />
         </div>
         <div className="filter">
           <div className="filter-text">Authors</div>
           <div>
             {
               allAuthor.slice(0,authorEnd).map(item => <div className="filter-content">
-                <input type="radio" className="radio-style" />
+                <input onChange={() => filterDispatch({type: "FILTER_AUTHOR",payload: item}) } type="checkbox" className="radio-style" checked={filterState.author.includes(item)} />
                 <div className="filter-name">{item}</div>
               </div>)
             }
@@ -115,7 +130,7 @@ export const ProductList = () => {
           <div>
             {
               allCategory.slice(0,categoryEnd).map(item => <div className="filter-content">
-                <input type="radio" className="radio-style" />
+                <input onChange={() => filterDispatch({type: "FILTER_CATEGORY", payload: item})} checked={filterState.category.includes(item)} type="checkbox" className="radio-style" />
                 <div className="filter-name">{item}</div>
               </div>)
             }
@@ -126,19 +141,19 @@ export const ProductList = () => {
           <div className="filter-text">Product Rating</div>
           <div>
             <label className="filter-content">
-              <input type="radio" className="radio-style" />
+              <input onChange={(e) => filterDispatch({type: "SET_RATING", payload: e.target.value})} value="1" checked={filterState.productRating === "1"} type="radio" className="radio-style" />
               <div className="filter-name">1 Stars & above</div>
             </label>
             <label className="filter-content">
-              <input type="radio" className="radio-style" />
+              <input onChange={(e) => filterDispatch({type: "SET_RATING", payload: e.target.value})} value="2" checked={filterState.productRating === "2"} type="radio" className="radio-style" />
               <div className="filter-name">2 Stars & above</div>
             </label>
             <label className="filter-content">
-              <input type="radio" className="radio-style" />
+              <input onChange={(e) => filterDispatch({type: "SET_RATING", payload: e.target.value})} value="3" checked={filterState.productRating === "3"} type="radio" className="radio-style" />
               <div className="filter-name">3 Stars & above</div>
             </label>
             <label className="filter-content">
-              <input type="radio" className="radio-style" />
+              <input onChange={(e) => filterDispatch({type: "SET_RATING", payload: e.target.value})} value="4" checked={filterState.productRating === "4"} type="radio" className="radio-style" />
               <div className="filter-name">4 Stars & above</div>
             </label>
           </div>
@@ -146,11 +161,11 @@ export const ProductList = () => {
         <div className="filter">
           <div className="filter-text filter-sort">Sort By</div>
           <label className="filter-content">
-            <input className="radio-style" type="radio" />
+            <input onChange={(e) => filterDispatch({type: "SORT_BY_PRICE", payload: e.target.value})} checked={filterState.sortPrice === "HighToLow"} value="HighToLow" className="radio-style" type="radio" />
             <div className="filter-name">High to Low</div>
           </label>
           <label className="filter-content">
-            <input className="radio-style" type="radio" />
+            <input onChange={(e) => filterDispatch({type: "SORT_BY_PRICE", payload: e.target.value})} checked={filterState.sortPrice === "LowToHigh"} value="LowToHigh" className="radio-style" type="radio" />
             <div className="filter-name">Low to High</div>
           </label>
         </div>

@@ -7,6 +7,7 @@ import { Signup } from "./Pages/02. Signup/Signup";
 import {ProductList} from "./Pages/03. ProductList/ProductList";
 import {ProductDetail} from "./Pages/04. ProductDetail/ProductDetail";
 import {WishList} from "./Pages/05. WishList/WishList";
+import { Cart } from "./Pages/06. Cart/Cart";
 
 function App() {
   return (
@@ -14,10 +15,12 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductList/>} />
+        <Route path="/products/:categorySelected" element={<ProductList/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/book/:id" element={<ProductDetail/>} />
         <Route path="/wishlist" element={<WishList/>} />
+        <Route path="/cart" element={<Cart/>} />
       </Routes>
     </div>
   );

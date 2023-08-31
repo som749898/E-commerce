@@ -58,6 +58,7 @@
   height:160px;
   border-radius: 10px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .homepage-category .image-container img {

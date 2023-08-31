@@ -34,9 +34,23 @@
   color: #f0f0f0;
 }
 
-.book-card .book-wishlist:hover {
+/* .book-card .book-wishlist:hover {
   fill: red;
+} */
+
+.book-card .book-not-wishlist {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bolder;
+  cursor: pointer;
+  color: red;
 }
+
+/* .book-card .book-not-wishlist:hover {
+  fill: #f0f0f0;
+} */
 
 .top-overlay {
   position: absolute;

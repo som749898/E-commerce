@@ -3,6 +3,12 @@
   font-size: 48px;
 }
 
+.wishlist-center {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+}
+
 .wishlist-list {
   display: flex;
   flex-wrap: wrap;

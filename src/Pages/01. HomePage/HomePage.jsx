@@ -12,7 +12,6 @@ import {BookImage} from "../../Utility/CategoryImage";
 export const HomePage = () => {
   const {state} = useContext(BookContext);
   const allCategory = [...new Set(state.data.map(item => item.category))];
-  console.log(BookImage);
   return <div>
     <Header/>
     <div className="cover-container">
@@ -30,10 +29,10 @@ export const HomePage = () => {
       <p>There are many categories of books available at BookBazaar. Choose your favorite one now.</p>
       <div className="homepage-category">
         {
-          allCategory.map((item,index) => <div className="image-container">
+          allCategory.map((item,index) => <NavLink to={`/products/${item}`}><div className="image-container">
             <img src={BookImage[index]} alt="categoryImage" />
             <div className="overlay">{item}</div>
-          </div>)
+          </div></NavLink>)
         }
       </div>
     </div>

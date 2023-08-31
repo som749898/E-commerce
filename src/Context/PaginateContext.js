@@ -13,12 +13,13 @@ const reducerFunction = (state, action) => {
       pages: action.payload.pages
     }
     case "PAGINATE": return {...state, currentPage: action.payload}
+    case "FIRST_PAGE": return {...state, currentPage: 1};
     default: return state
   }
 }
 
 export const PaginateProvider = ({children}) => {
-  const {state} = useContext(BookContext);
+  const { searchState} = useContext(BookContext);
   const [paginateState, paginateDispatch] = useReducer(reducerFunction, {
     currentPage: 1,
     pagePerPost: 8,
@@ -29,14 +30,18 @@ export const PaginateProvider = ({children}) => {
   useEffect(() => {
     const lastBookIndex = paginateState.currentPage * paginateState.pagePerPost;
     const firstBookIndex = lastBookIndex - paginateState.pagePerPost;
-    const selectedBooks = state.data.slice(firstBookIndex,lastBookIndex);
+    const selectedBooks = searchState.searchData.slice(firstBookIndex,lastBookIndex);
     const pages = [];
-    for(let i = 0; state.data.length > (paginateState.pagePerPost * i); i++) {
+    for(let i = 0; searchState.searchData.length > (paginateState.pagePerPost * i); i++) {
       pages.push(i+1);
     }
     
     paginateDispatch({type: "SELECTED_BOOKS", payload: {selectedBooks,pages}});
-  },[paginateState.currentPage,state.data, paginateState.pagePerPost])
+  },[paginateState.currentPage,searchState.searchData, paginateState.pagePerPost])
+
+  useEffect(() => {
+    paginateDispatch({type: "FIRST_PAGE"});
+  },[searchState])
 
   return <PaginateContext.Provider value={{paginateState,paginateDispatch}}>
       {children}
