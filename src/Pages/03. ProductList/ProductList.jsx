@@ -170,7 +170,7 @@ export const ProductList = () => {
           </label>
         </div>
       </div>
-        <div className="product-list">
+      <div className="product-list">
           {
             paginateState.books.map(item => <BookCard item={item} />)
           }

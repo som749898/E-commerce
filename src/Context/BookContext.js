@@ -9,6 +9,8 @@ const reducerFunction = (state, action) => {
     }
     case "ADD_WISHLIST": return {...state, wishlist: action.payload.wishlist}
     case "ADD_CART": return {...state, cart: action.payload}
+    case "COUPON_CANCEL": return {...state, selectedCoupons: ""};
+    case "APPLY_COUPON": return {...state, selectedCoupons: action.payload};
     default: return state;
   }
 }
@@ -52,7 +54,8 @@ export const BookProvider = ({children}) => {
     data: [],
     wishlist: [],
     cart: [],
-    coupon: ["50% OFF:REPUBLIC_SALE", "10% OFF:NEW_USER"]
+    coupon: ["50% OFF:REPUBLIC_SALE", "10% OFF:NEW_USER"],
+    selectedCoupons: ""
   })
 
   const [filterState, filterDispatch] = useReducer(filterFunction, {
