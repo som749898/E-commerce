@@ -1,0 +1,208 @@
+.address-modal {
+  height: 31.25rem;
+  width: 31.25rem;
+  margin: auto;
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.address-modal .modal-header {
+  font-size: 1.375rem;
+  margin-top: 1.25rem;
+}
+
+.address-modal .modal-input {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 25rem;
+}
+
+.address-modal .modal-input input {
+  padding: 0.3125rem 1rem;
+  border-radius: 0.3125rem;
+  caret-color: auto;
+  border: 1px solid rgba(255,255,255,0.86);
+}
+
+.address-modal .modal-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 25rem;
+  margin-bottom: 1.875rem;
+}
+
+.modal-btn .btn-add,  .modal-btn .btn-data{
+  padding: 0.25rem 0.75rem;
+  border: 0;
+  box-sizing: border-box;
+  background-color: #1c1c1e;
+  color: #ffffff;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 22px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.modal-btn .btn-add:hover, .modal-btn .btn-data:hover {
+  background-color: #49494e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal-btn .btn-cancel{
+  padding: 0px 0.5rem;
+  border: 2px solid #d9d9de;
+  box-sizing: border-box;
+  background-color: rgba(255,255,255,0.86);
+  color: #1c1c1e;
+  font-family: "Poppins";
+  outline: none;
+  cursor: pointer;
+}
+.modal-btn .btn-cancel:hover {
+  background-color: rgba(246, 242, 242, 0.86);
+}
+
+.checkout-container {
+  display: flex;
+}
+
+.checkout-container .checkout-address {
+  flex: 1;
+}
+
+.checkout-container .checkout-detail {
+  flex: 1;
+  width: 31.25rem;
+  margin: auto;
+}
+
+.checkout-address .add-address {
+  margin-bottom: 1.875rem;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 0.375rem;
+  background-color: #1c1c1e;
+  color: #ffffff; 
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 1.375rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkout-address .add-address:hover {
+  background-color: #49494e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.checkout-address .address-container {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  width: 31.25rem;
+  margin: auto;
+}
+
+.checkout-address .each-address {
+  border-bottom: 2px solid #f0f0f0;
+  padding: 0.625rem 2.5rem;
+  /* margin: 0px 30px; */
+}
+
+.each-address .address-top {
+  display: flex;
+  margin-bottom: 0.625rem;
+}
+
+.each-address .address-bottom {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.address-top input {
+  margin-right: 0.625rem;
+  margin-top: 0.3125rem;
+}
+
+.address-top div {
+  font-size: 1.25rem;
+}
+
+.checkout-header {
+  font-size: 3rem;
+  margin: 2.5rem 0px;
+}
+
+.checkout-detail .detail-container {
+  width: 30rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  padding: 1.875rem 2.5rem;
+  margin-bottom: 3.125rem;
+}
+
+.detail-container .checkout-order {
+  margin: 0.625rem 0rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 0.9375rem;
+}
+
+.detail-container .checkout-items {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin: 0.625rem 0px;
+  margin-bottom: 0.9375rem;
+}
+
+.detail-container .checkout-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3125rem;
+}
+
+.detail-container .checkout-hr {
+  margin-top: 1.25rem;
+}
+
+.detail-container .desc {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3125rem;
+}
+
+.checkout-hr-down {
+  margin-bottom: 0.625rem;
+}
+
+.detail-container .detail-address {
+  text-align: left;
+  font-size: 0.75rem;
+}
+
+.detail-address .address-header {
+  font-size: 1.125rem;
+  font-weight: 450;
+}
+
+.detail-container .place-btn {
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 0.375rem;
+  background-color: #1c1c1e;
+  color: #ffffff; 
+  font-family: "Poppins";
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+}

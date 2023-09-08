@@ -4,6 +4,7 @@ import {Routes, Route} from "react-router-dom";
 import "./App.css";
 import {HomePage} from "./Pages/01. HomePage/HomePage"
 import { Signup } from "./Pages/02. Signup/Signup";
+import { Login } from "./Pages/08. Login/Login";
 import {ProductList} from "./Pages/03. ProductList/ProductList";
 import {ProductDetail} from "./Pages/04. ProductDetail/ProductDetail";
 import {WishList} from "./Pages/05. WishList/WishList";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/products" element={<ProductList/>} />
         <Route path="/products/:categorySelected" element={<ProductList/>} />
         <Route path="/signup" element={<Signup/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/book/:id" element={<ProductDetail/>} />
         <Route path="/wishlist" element={<WishList/>} />

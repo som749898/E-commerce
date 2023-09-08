@@ -108,9 +108,12 @@ export const Cart = () => {
           <br/>
         </div>
         <div className="save">You will save ${totalDiscount + totalCouponDiscount} on this order</div>
-        <NavLink to="/checkout">
+        {
+          state.cart.length !== 0 && 
+          <NavLink to="/checkout">
           <button className="cart-btn">Checkout</button>
         </NavLink>
+        }
       </div>
     </div>
     <Footer/>

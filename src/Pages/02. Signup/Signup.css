@@ -1,0 +1,131 @@
+.signup {
+  display: flex;
+  height: 100vh;
+}
+
+.signup .signup-img {
+  flex: 1;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-img img {
+  height: 450px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.signup-contain {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-contain .signup-detail {
+  text-align: left;
+  display: inline-block;
+}
+
+.signup-detail .signup-header h1 {
+  color: #080a0b;
+  font-size: 48px;
+  font-family: "Poppins";
+  font-weight: 700;
+  line-height: 56px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.signup-detail .signup-header div {
+  color: #5d5d5b;
+  font-size: 14px;
+  font-family: "Poppins";
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-detail .signup-data {
+  margin-bottom: 30px;
+}
+
+.signup-detail .signup-data .signup-field div {
+  color: #080a0b;
+  font-size: 14px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 16px;
+  margin-bottom: 10px;
+}
+
+.signup-data .signup-field .signup-input {
+  position: relative;
+}
+
+.signup-field .signup-input input {
+  top: 235px;
+  left: 846px;
+  width: 468px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 1px solid #d9d9de;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.86);
+  color: #1c1c1e;
+  font-size: 14px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 18px;
+  outline: none;
+  caret-color: auto;
+}
+
+.signup-field .signup-icon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: #1c1c1e;
+}
+
+.signup-detail .sign-btn {
+  width: 468px;
+  height: 48px;
+  padding: 0px 8px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: #1c1c1e;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 700;
+  line-height: 22px;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.signup-detail .sign-account {
+  color: #5d5d5b;
+  font-size: 14px;
+  font-family: "Poppins";
+  line-height: 18px;
+  text-align: center;
+}
+
+.sign-account .signup-login {
+  color: #5d5d5b;
+  font-size: 14px;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 18px;
+  cursor: pointer;
+}

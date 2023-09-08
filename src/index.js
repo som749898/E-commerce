@@ -7,6 +7,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import {BookProvider} from "./Context/BookContext";
 import {PaginateProvider} from "./Context/PaginateContext";
+import {AddressProvider} from "./Context/AddressContext";
 
 // Call make Server
 makeServer();
@@ -16,7 +17,9 @@ ReactDOM.render(
     <Router>
       <BookProvider>
         <PaginateProvider>
-          <App />
+          <AddressProvider>
+            <App />
+          </AddressProvider>
         </PaginateProvider>
       </BookProvider>
     </Router>
