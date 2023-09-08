@@ -17,6 +17,7 @@ export const Login = () => {
         body: JSON.stringify(credentials)
       }).then(res => res.json())
       localStorage.setItem("token",generateToken.encodedToken);
+      localStorage.setItem("info", JSON.stringify(generateToken.foundUser));
     } catch(e) {
       console.log(e)
     }
