@@ -92,3 +92,27 @@
 .cart-quantity .minus {
   font-size: 2.5rem;
 }
+
+.cart-container-img {
+  position: relative;
+}
+
+.cart-container .book-wishlist {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bolder;
+  cursor: pointer;
+  color: #f0f0f0;
+}
+
+.cart-container .book-not-wishlist {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bolder;
+  cursor: pointer;
+  color: red;
+}

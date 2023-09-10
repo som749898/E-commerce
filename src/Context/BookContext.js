@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const BookContext = createContext();
 
@@ -74,8 +74,11 @@ export const BookProvider = ({children}) => {
     searchData: []
   })
 
+  const [loading, setLoading] = useState(false);
+
   const getProduct = async () => {
     try {
+      setLoading(true);
       const encodedToken = localStorage.getItem("token");
       const allProduct = await fetch("/api/products").then(res => res.json());
       const allCart = await fetch("/api/user/cart",{
@@ -93,6 +96,7 @@ export const BookProvider = ({children}) => {
       dispatch({type: "LOAD_DATA", payload: {product: allProduct.products, cart: allCart.cart, wishlist: allWishlist.wishlist  }})
       filterDispatch({type: "LOAD_DATA", payload: allProduct.products});
       searchDispatch({type: "LOAD_DATA", payload: allProduct.products});
+      setLoading(false);
     } catch(e) {
       console.log(e);
     }
@@ -149,7 +153,7 @@ export const BookProvider = ({children}) => {
     searchDispatch({type: "SET_DATA", payload: data});
     // eslint-disable-next-line
   },[filterState.data ,searchState.searchText]);
-  return <BookContext.Provider value={{state,dispatch, filterState,filterDispatch,searchState, searchDispatch}}>
+  return <BookContext.Provider value={{state,dispatch, filterState,filterDispatch,searchState, searchDispatch, loading, setLoading}}>
     {children}
   </BookContext.Provider>
 }

@@ -6,9 +6,9 @@ import {BsFillStarFill} from "react-icons/bs";
 import { AiFillHeart } from "react-icons/ai";
 import { BookContext } from "../../Context/BookContext";
 
-import "./BookCard.css"
+import "./WishListCard.css"
 
-export const BookCard = ({item}) => {
+export const WishListCard = ({item}) => {
   const overlay = () => {
     return !item.inStock ? "top-overlay" : "";
   }
@@ -20,9 +20,8 @@ export const BookCard = ({item}) => {
     const data = {
       "product": item
     }
-
     const fetchData = () => {
-      return new Promise(async (resolve,reject) => {
+      return new Promise(async (resolve, reject) => {
         try {
           const addWishlistitem = await fetch("/api/user/wishlist", {
             method: "POST",
@@ -48,9 +47,8 @@ export const BookCard = ({item}) => {
 
   const deleteWishlist = async () => {
     const encodedToken = localStorage.getItem("token");
-
     const fetchData = () => {
-      return new Promise( async (resolve,reject) => {
+      return new Promise(async (resolve,reject) => {
         try {
           const deleteWishListItem = await fetch(`/api/user/wishlist/${item._id}`, {
             method: "DELETE",
@@ -60,16 +58,15 @@ export const BookCard = ({item}) => {
           }).then(res => res.json())
           dispatch({type: "ADD_WISHLIST", payload: deleteWishListItem});
           resolve(deleteWishListItem);
-        } catch(error) {
+        }catch(error) {
           reject(error);
         }
       })
     }
-
     const myPromise = fetchData();
     toast.promise(myPromise, {
       loading: 'deleting the item',
-      success: 'Item has been successfully deleted from wishlist',
+      success: 'Item has been successfully removed from wishlist',
       error: 'Error when fetching or deleting wishlist data',
     });
   }
@@ -83,32 +80,60 @@ export const BookCard = ({item}) => {
     const body = {
       "product": item
     }
-    const fetchCartData = () => {
-      return new Promise(async (resolve, reject) => {
+    const fetchData = () => {
+      return new Promise(async (resolve,reject) => {
         try {
           const cart = await fetch('/api/user/cart', {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'authorization': encodedToken,
-              'Content-Type': 'application/json',
+              "authorization": encodedToken,
             },
-            body: JSON.stringify(body),
+            body: JSON.stringify(body)
           }).then(res => res.json());
-    
-          dispatch({ type: 'ADD_CART', payload: cart.cart });
+          dispatch({type: "ADD_CART", payload: cart.cart});
           resolve(cart);
-        } catch (error) {
+        }catch(error) {
           reject(error);
         }
-      });
-    };
-    
-    const myPromise = fetchCartData();
-    
+      })
+    }
+    const myPromise = fetchData();
     toast.promise(myPromise, {
       loading: 'adding the item',
       success: 'Item has been successfully added to cart',
       error: 'Error when fetching or adding cart data',
+    });
+  }
+
+  const itemPlus = async () => {
+    const encodedToken = localStorage.getItem("token");
+    const data = {
+      action: {
+        type: "increment"
+      }
+    }
+    const fetchData = () => {
+      return new Promise(async (resolve,reject) => {
+        try {
+          const result = await fetch(`/api/user/cart/${item._id}`, {
+            method: "POST",
+            headers: {
+              "authorization": encodedToken
+            },
+            body: JSON.stringify(data)
+          }).then(res => res.json());
+          dispatch({type: "ADD_CART", payload: result.cart});
+          resolve(result);
+        }catch(error) {
+          reject(error);
+        }
+      })
+    }
+    const myPromise = fetchData();
+    toast.promise(myPromise, {
+      loading: 'increasing the quantity',
+      success: 'Quantity of item has been increased by 1 unit',
+      error: 'Error when fetching or deleting cart data',
     });
   }
 
@@ -129,16 +154,12 @@ export const BookCard = ({item}) => {
         </div>
       </NavLink>
       {
-        state.cart.find(cart => cart._id === item._id) ? <NavLink to="/cart">
-          <button className="book-btn">Go to Cart</button>
-        </NavLink> :
-        <div>
-          <button onClick={addToCart} className="book-btn">Add to Cart</button>
-          <Toaster />
-        </div>
+        state.cart.find(cart => cart._id === item._id) ?
+          <button onClick={itemPlus} className="book-btn">Added to Cart</button> : <button onClick={addToCart} className="book-btn">Add to Cart</button>
       }
       {
       !item.inStock && <div className="outOfStock">Out of Stock</div>
       }
+      <Toaster/>
     </div>
 }

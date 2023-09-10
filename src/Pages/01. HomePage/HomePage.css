@@ -52,6 +52,13 @@
   justify-content: space-between;
 }
 
+.homepage-category .homepage-spinner {
+  margin: auto;
+}
+
+.rotating-lines {
+}
+
 .homepage-category .image-container {
   position: relative;
   width: 274px;

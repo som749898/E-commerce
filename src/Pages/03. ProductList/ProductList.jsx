@@ -2,6 +2,7 @@ import { useContext, useState, useRef, useEffect } from "react"
 import { BsArrowLeft, BsFillBookmarkFill,BsFillHandbagFill,BsFillTagFill } from "react-icons/bs";
 import {FaCarSide} from "react-icons/fa";
 import {AiOutlineDown} from "react-icons/ai";
+import { RotatingLines } from  'react-loader-spinner'
 
 import { BookContext } from "../../Context/BookContext"
 import { PaginateContext } from "../../Context/PaginateContext";
@@ -21,7 +22,7 @@ export const ProductList = () => {
   const loadMoreCategory = () => {
     return categoryEnd < allCategory.length ? setCategoryEnd(prev => prev +4) : setCategoryEnd(allCategory.length)
   }
-  const {state, filterState,filterDispatch, searchDispatch} = useContext(BookContext);
+  const {state, filterState,filterDispatch, searchDispatch,loading} = useContext(BookContext);
   const allCategory = [...new Set(state.data.map(item => item.category))];
   const allAuthor = [...new Set(state.data.map(item => item.author))];
 
@@ -171,7 +172,19 @@ export const ProductList = () => {
         </div>
       </div>
       <div className="product-list">
-          {
+          { loading ?
+          <div className="product-spinner">
+            <div>
+              <RotatingLines className="rotating-lines"
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="96"
+              visible={true}
+              />
+            </div>
+          </div>
+            :
             paginateState.books.map(item => <BookCard item={item} />)
           }
         </div>

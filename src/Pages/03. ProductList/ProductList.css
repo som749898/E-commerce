@@ -142,6 +142,7 @@
   text-align: left;
   width: 336px;
   padding: 22px;
+  flex: 1;
 }
 
 /* Style the input range slider */
@@ -305,6 +306,19 @@
   flex-wrap: wrap;
   padding-left: 70px;
   align-items: flex-start;
+  flex: 3;
+}
+
+.product-list .product-spinner {
+  display: block;
+  margin: auto;
+}
+
+.rotating-lines {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* product pages */

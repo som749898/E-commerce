@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import Modal from 'react-modal';
+import {useNavigate} from "react-router-dom";
 
 import "./Checkout.css";
 import { Header } from "../../Components/01. Header/Header";
@@ -18,6 +19,38 @@ export const Checkout = () => {
   const totalDiscount = Math.round(totalCost * 0.2);
   const totalCouponDiscount = (totalCost - totalDiscount) * Number(state.selectedCoupons.slice(0,2))/100;
   const totalAmount = (totalCost - totalDiscount) - totalCouponDiscount;
+
+  // razorpay integration
+  const info = JSON.parse(localStorage.getItem("info"));
+  const navigate = useNavigate();
+
+  const checkoutBtn = () => {
+    var option={
+      key:"rzp_test_mmDucLcvrE3oC1",
+      key_secret:"KOKFhYScRVHEo45WTMo5RS2G",
+      amount: totalCost*100*82,
+      currency:'INR',
+      name:"BookBazaar",
+      description:"Checkout for Merch",
+      handler:function(response){
+      navigate("/");
+      },
+      prefill:{
+        name: `${info.firstName} ${info.lastName}`,
+        email: `${info.email}`,
+        contact: `${addressState.currentAddress.mobileNo}`,
+      },
+      notes:{
+        address:"Razorpay Corporate Office"
+      },
+      theme:{
+        color:"#f0f0f0",
+      },
+  };
+  var pay=new window.Razorpay(option);
+  pay.open();
+  }
+
   return <div>
     <Header/>
     <h1 className="checkout-header">Checkout</h1>
@@ -120,7 +153,7 @@ export const Checkout = () => {
                 <div>{addressState.currentAddress.city}, {addressState.currentAddress.state}, {addressState.currentAddress.postalCode}</div>
                 <div>Phone Number - {addressState.currentAddress.mobileNo}</div>
               </div>
-              <button className="place-btn">Place Order</button>
+              <button onClick={checkoutBtn} className="place-btn">Place Order</button>
             </div>
           }
         </div>

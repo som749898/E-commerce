@@ -2,6 +2,7 @@ import { useParams, NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { AiFillStar, AiFillThunderbolt } from "react-icons/ai";
 import { BsFillTagFill } from "react-icons/bs";
+import toast, { Toaster } from 'react-hot-toast';
 
 import "./ProductDetail.css"
 import { BookContext } from "../../Context/BookContext"
@@ -18,14 +19,29 @@ export const ProductDetail = () => {
     const body = {
       "product": selectedProduct
     }
-    const cart = await fetch('/api/user/cart', {
-      method: "POST",
-      headers: {
-        "authorization": encodedToken,
-      },
-      body: JSON.stringify(body)
-    }).then(res => res.json());
-    dispatch({type: "ADD_CART", payload: cart.cart})
+    const fetchData = () => {
+      return new Promise(async (resolve,reject) => {
+        try {
+          const cart = await fetch('/api/user/cart', {
+            method: "POST",
+            headers: {
+              "authorization": encodedToken,
+            },
+            body: JSON.stringify(body)
+          }).then(res => res.json());
+          dispatch({type: "ADD_CART", payload: cart.cart});
+          resolve(cart);
+        }catch(error) {
+          reject(error);
+        }
+      })
+    }
+    const myPromise = fetchData();
+    toast.promise(myPromise, {
+      loading: 'adding the item',
+      success: 'Item has been successfully added to cart',
+      error: 'Error when fetching or adding cart data',
+    });
   }
 
   const addToWishlist = async () => {
@@ -33,14 +49,29 @@ export const ProductDetail = () => {
     const data = {
       "product": selectedProduct
     }
-    const addWishlistitem = await fetch("/api/user/wishlist", {
-      method: "POST",
-      headers: {
-        "authorization": encodedToken,
-      },
-      body: JSON.stringify(data)
-    }).then(res => res.json())
-    dispatch({type: "ADD_WISHLIST", payload: addWishlistitem});
+    const fetchData = () => {
+      return new Promise(async (resolve,reject) => {
+        try {
+          const addWishlistitem = await fetch("/api/user/wishlist", {
+            method: "POST",
+            headers: {
+              "authorization": encodedToken,
+            },
+            body: JSON.stringify(data)
+          }).then(res => res.json())
+          dispatch({type: "ADD_WISHLIST", payload: addWishlistitem});
+          resolve(addWishlistitem);
+        }catch(error) {
+          reject(error);
+        }
+      })
+    }
+    const myPromise = fetchData();
+    toast.promise(myPromise, {
+      loading: 'adding the item',
+      success: 'Item has been successfully added to wishlist',
+      error: 'Error when fetching or adding wishlist data',
+    });
   }
   
   return <div>
@@ -109,5 +140,6 @@ export const ProductDetail = () => {
         </div>
     </div>
     </div>
+    <Toaster/>
   </div>
 }
