@@ -8,6 +8,7 @@ import { makeServer } from "./server";
 import {BookProvider} from "./Context/BookContext";
 import {PaginateProvider} from "./Context/PaginateContext";
 import {AddressProvider} from "./Context/AddressContext";
+import {OrderProvider} from "./Context/OrderContext";
 
 // Call make Server
 makeServer();
@@ -18,7 +19,9 @@ ReactDOM.render(
       <BookProvider>
         <PaginateProvider>
           <AddressProvider>
-            <App />
+            <OrderProvider>
+              <App />
+            </OrderProvider>
           </AddressProvider>
         </PaginateProvider>
       </BookProvider>

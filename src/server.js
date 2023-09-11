@@ -8,6 +8,7 @@ import {
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
+  clearCartHandler
 } from "./backend/controllers/CartController";
 import {
   getAllCategoriesHandler,
@@ -73,6 +74,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/user/cart", getCartItemsHandler.bind(this));
       this.post("/user/cart", addItemToCartHandler.bind(this));
       this.post("/user/cart/:productId", updateCartItemHandler.bind(this));
+      this.post("/user/cart/clearCart", clearCartHandler.bind(this));
       this.delete(
         "/user/cart/:productId",
         removeItemFromCartHandler.bind(this)

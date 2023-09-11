@@ -11,6 +11,7 @@ import {WishList} from "./Pages/05. WishList/WishList";
 import { Cart } from "./Pages/06. Cart/Cart";
 import {Checkout} from "./Pages/07. Checkout/Checkout";
 import { Profile } from "./Pages/09. Profile/Profile";
+import {OrderSummary} from "./Pages/10. OrderSummary/OrderSummary";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
         <Route path="/wishlist" element={<WishList/>} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/checkout" element={<Checkout/>} />
-        <Route path="profile" element={<Profile/>} />
+        <Route path="/profile" element={<Profile/>} />
+        <Route path="/order/summary" element={<OrderSummary/>} />
       </Routes>
     </div>
   );

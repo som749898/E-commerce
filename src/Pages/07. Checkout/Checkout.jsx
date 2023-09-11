@@ -7,12 +7,36 @@ import { Header } from "../../Components/01. Header/Header";
 import {Footer} from "../../Components/02. Footer/Footer";
 import { BookContext } from "../../Context/BookContext";
 import {AddressContext} from "../../Context/AddressContext";
+import { OrderContext } from "../../Context/OrderContext";
 
 export const Checkout = () => {
-  const {state} = useContext(BookContext);
+  const {state, dispatch} = useContext(BookContext);
+  const {orderState, orderDispatch} = useContext(OrderContext);
   const {addressState, addressDispatch} = useContext(AddressContext);
   const [addressModal, setAddressModal] = useState(false);
-  console.log("state", addressState);
+  console.log("state", orderState);
+
+  const checkClearCart = async () => {
+    try {
+      const response = await fetch("/api/user/cart/clearCart", {
+        method: "POST",
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+        body: JSON.stringify({}),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      dispatch({type: "CLEAR_CART"});
+      return await response.json();
+    } catch (error) {
+      console.error("Fetch Error:", error);
+      throw error;
+    }
+  }
 
   const totalItem = state.cart.reduce(((acc,cur) => acc + cur.qty),0);
   const totalCost = Math.round(state.cart.reduce(((acc,cur) => acc + cur.qty * cur.price),0));
@@ -33,7 +57,8 @@ export const Checkout = () => {
       name:"BookBazaar",
       description:"Checkout for Merch",
       handler:function(response){
-      navigate("/");
+      navigate("/order/summary");
+      checkClearCart();
       },
       prefill:{
         name: `${info.firstName} ${info.lastName}`,
@@ -48,6 +73,7 @@ export const Checkout = () => {
       },
   };
   var pay=new window.Razorpay(option);
+  orderDispatch({type: "ADD", payload1: state.cart, payload2: pay.id, payload3: totalAmount, payload4: addressState.currentAddress});
   pay.open();
   }
 
@@ -84,7 +110,7 @@ export const Checkout = () => {
         </Modal>
         <div className="address-container">
           {
-            addressState.address.length !==0 && addressState.address.map(item => <div className="each-address" key={item._id}>
+            addressState.address.length !==0 && addressState.address.map(item => <label className="each-address" key={item._id}>
               <div className="address-top">
                 <input type="radio" checked={addressState.currentAddress._id === item._id} onChange={(e) => addressDispatch({type: "CHANGE_ADDRESS", payload: e.target.value})} value={item._id} />
                 <div>{item.name}</div>
@@ -95,7 +121,7 @@ export const Checkout = () => {
                 <div>{item.country}</div>
                 <div>Phone Number - {item.mobileNo}</div>
               </div>
-            </div>)
+            </label>)
           }
         </div>
       </div>

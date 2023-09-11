@@ -1,19 +1,26 @@
 import "./Profile.css"
 import {Header} from "../../Components/01. Header/Header";
+import { ProfileInfo } from "../../Components/07. Profile/Profile";
+import { Address } from "../../Components/08. Address/Address";
+import { useState } from "react";
 
 export const Profile = () => {
-  const info = JSON.parse(localStorage.getItem("info"));
-  console.log("info", info);
+  const [show, setShow] = useState("profile");
+  const activeStyle = (text) => {
+    return text === show ? "profile-active" : "";
+  }
   return <div>
     <Header/>
-    <div>
-      <div className="profile-header">Profile Information</div>
-      <div className="profile-contains">
-        <div><span>Name </span>{`- ${info.firstName} ${info.lastName}`}</div>
-        <div><span>Email </span>{`- ${info.email}`}</div>
-      </div>
-      <br/>
-      <button className="profile-btn">Log Out</button>
+    <div className="profile-nav">
+      <div className={activeStyle("profile")} onClick={() => setShow("profile")}>Profile</div>
+      <div className={activeStyle("address")} onClick={() => setShow("address")}>Address</div>
+      <div className={activeStyle("orders")}>Orders</div>
     </div>
+    {
+      show === "profile" && <ProfileInfo/>
+    }
+    {
+      show === "address" && <Address/>
+    }
   </div>
 }

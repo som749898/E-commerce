@@ -1,35 +1,13 @@
-.profile-header {
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 30px 0px;
-}
-
-.profile-contains {
-  text-align: left;
-  display: inline-block;
+.profile-nav {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  gap: 20px;
   font-size: 20px;
-  font-weight: 500;
-}
-
-.profile-contains div {
-  margin-bottom: 10px;
-}
-
-.profile-contains span {
-  color: #918b8d;
-}
-
-.profile-btn {
-  padding: 0.25rem 0.75rem;
-  border: 0;
-  box-sizing: border-box;
-  background-color: #1c1c1e;
-  color: #ffffff;
-  font-family: "Poppins";
-  font-weight: 500;
-  line-height: 22px;
-  outline: none;
-  cursor: pointer;
-  border-radius: 3px;
   margin-top: 20px;
+  cursor: pointer;
+}
+
+.profile-nav .profile-active {
+  font-weight: bold;
 }

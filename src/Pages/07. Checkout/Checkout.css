@@ -112,7 +112,8 @@
 .checkout-address .each-address {
   border-bottom: 2px solid #f0f0f0;
   padding: 0.625rem 2.5rem;
-  /* margin: 0px 30px; */
+  cursor: pointer;
+  display: block;
 }
 
 .each-address .address-top {

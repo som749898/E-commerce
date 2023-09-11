@@ -11,6 +11,7 @@ const reducerFunction = (state, action) => {
     case "ADD_CART": return {...state, cart: action.payload}
     case "COUPON_CANCEL": return {...state, selectedCoupons: ""};
     case "APPLY_COUPON": return {...state, selectedCoupons: action.payload};
+    case "CLEAR_CART": return {...state, cart: []};
     default: return state;
   }
 }

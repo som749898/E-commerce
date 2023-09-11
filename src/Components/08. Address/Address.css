@@ -1,0 +1,13 @@
+.profile-address .address-btn {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-address .address-btn button {
+    border-radius: 5px;
+    margin-right: 15px;
+    padding: 6px 18px;
+    border: none;
+    cursor: pointer;
+}
