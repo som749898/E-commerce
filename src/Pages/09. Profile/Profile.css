@@ -2,9 +2,9 @@
   display: flex;
   margin: auto;
   justify-content: center;
-  gap: 20px;
-  font-size: 20px;
-  margin-top: 20px;
+  gap: 1.25rem;
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
   cursor: pointer;
 }
 

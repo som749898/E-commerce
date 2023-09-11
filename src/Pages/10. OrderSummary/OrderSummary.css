@@ -1,13 +1,13 @@
 .summary .success {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
   color: #65c3a1;
 }
 
 .summary .summary-details {
   display: inline-block;
   text-align: left;
-  max-width: 500px;
+  max-width: 31.25rem;
 }
 
 .summary-details div {
@@ -24,7 +24,7 @@
 }
 
 .summary-details .order-id {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .summary-details .address {
@@ -41,16 +41,11 @@
   color: #696969;
 }
 
-/* .order-container {
-  border: 1px solid red;
-  padding: 5px;
-} */
-
 .order-card {
-  max-width: 400px;
+  max-width: 25rem;
   margin: auto;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 1.875rem;
+  margin-bottom: 3.125rem;
 }
 
 .order-card .order-detail {
@@ -65,5 +60,5 @@
 
 .order-detail .order-middle, .order-detail .order-bottom {
   color: #808080;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
