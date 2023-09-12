@@ -113,12 +113,18 @@
   margin-bottom: 10px;
 }
 
+.signup-detail .sign-btn:hover {
+  background-color: #49494e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .signup-detail .sign-account {
   color: #5d5d5b;
   font-size: 14px;
   font-family: "Poppins";
   line-height: 18px;
   text-align: center;
+  margin-top: 10px;
 }
 
 .sign-account .signup-login {

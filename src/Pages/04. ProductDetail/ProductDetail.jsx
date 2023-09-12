@@ -1,17 +1,21 @@
-import { useParams, NavLink } from "react-router-dom"
+import { useParams, NavLink, useNavigate, useLocation } from "react-router-dom"
 import { useContext } from "react"
 import { AiFillStar, AiFillThunderbolt } from "react-icons/ai";
 import { BsFillTagFill } from "react-icons/bs";
 import toast, { Toaster } from 'react-hot-toast';
 
 import "./ProductDetail.css"
-import { BookContext } from "../../Context/BookContext"
+import { BookContext } from "../../Context/BookContext";
+import { LoginContext } from "../../Context/LoginContext";
 
 import { Header } from "../../Components/01. Header/Header"
 
 export const ProductDetail = () => {
   const {id} = useParams();
   const {state, dispatch} = useContext(BookContext);
+  const {loginState} = useContext(LoginContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const selectedProduct = state.data.find(item => item._id.toString() === id);
 
   const addToCart = async () => {
@@ -130,12 +134,12 @@ export const ProductDetail = () => {
           {
           state.cart.find(cart => cart._id === selectedProduct._id) ? <NavLink to="/cart">
           <button className="book-cart">Go to Cart</button>
-          </NavLink> : <button onClick={addToCart} className="book-cart">Add to Cart</button>
+          </NavLink> : <button onClick={!loginState.isLogin ? () => navigate("/login", { state: { from: location } }) : addToCart} className="book-cart">Add to Cart</button>
           }
           {
           state.wishlist.find(wishlist => wishlist._id === selectedProduct._id) ? <NavLink to="/wishlist">
           <button className="book-wishlist">Go to Wishlist</button>
-          </NavLink> : <button onClick={addToWishlist} className="book-wishlist">Add to Wishlist</button>
+          </NavLink> : <button onClick={!loginState.isLogin ? () => navigate("/login", { state: { from: location } }) : addToWishlist} className="book-wishlist">Add to Wishlist</button>
           }
         </div>
     </div>

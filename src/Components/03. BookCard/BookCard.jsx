@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 
 import {BsFillStarFill} from "react-icons/bs";
 import { AiFillHeart } from "react-icons/ai";
 import { BookContext } from "../../Context/BookContext";
+import { LoginContext } from "../../Context/LoginContext";
 
 import "./BookCard.css"
 
@@ -14,6 +15,9 @@ export const BookCard = ({item}) => {
   }
   
   const {state,dispatch} = useContext(BookContext);
+  const {loginState} = useContext(LoginContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const addToWishlist = async () => {
     const encodedToken = localStorage.getItem("token");
@@ -115,7 +119,7 @@ export const BookCard = ({item}) => {
   return <div className="book-card">
       <div className={`${overlay()}`}>
         <div>{item.bestseller ? <div className="bestseller-tag">Bestseller</div> : ""}</div>
-        <AiFillHeart onClick={state.wishlist.find(wish => wish._id === item._id) ? deleteWishlist : addToWishlist} className={activeWishlist()}/>
+        <AiFillHeart onClick={!loginState.isLogin ? () => navigate("/login", { state: { from: location } }) :  (state.wishlist.find(wish => wish._id === item._id) ? deleteWishlist : addToWishlist)} className={activeWishlist()}/>
       </div>
       <NavLink to={`/book/${item._id}`}>
         <img src={item.coverImage} alt="coverImage" />
@@ -133,7 +137,7 @@ export const BookCard = ({item}) => {
           <button className="book-btn">Go to Cart</button>
         </NavLink> :
         <div>
-          <button onClick={addToCart} className="book-btn">Add to Cart</button>
+          <button onClick={!loginState.isLogin ? () => navigate("/login", { state: { from: location } }) : addToCart} className="book-btn">Add to Cart</button>
           <Toaster />
         </div>
       }

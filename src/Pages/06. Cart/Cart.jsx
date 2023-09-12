@@ -22,7 +22,6 @@ export const Cart = () => {
     setModalIsOpen(false);
     dispatch({type: "COUPON_CANCEL"})
   }
-  console.log("state", state);
 
   const totalItem = state.cart.reduce(((acc,cur) => acc + cur.qty),0);
   const totalCost = Math.round(state.cart.reduce(((acc,cur) => acc + cur.qty * cur.price),0));

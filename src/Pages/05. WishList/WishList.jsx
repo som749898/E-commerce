@@ -8,8 +8,7 @@ import { WishListCard } from "../../Components/06. WishListCard/WishListCard";
 import { EmptyCard } from "../../Components/04. EmptyCard/EmptyCard";
 
 export const WishList = () => {
-  const {state, serchState} = useContext(BookContext);
-  console.log("state wishlist", serchState);
+  const {state} = useContext(BookContext);
   return <div>
     <Header/>
     <div className="wishlist-container">

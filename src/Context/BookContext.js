@@ -4,14 +4,19 @@ export const BookContext = createContext();
 
 const reducerFunction = (state, action) => {
   switch(action.type) {
-    case "LOAD_DATA": return {...state,data: action.payload.product, cart: action.payload.cart,
-      wishlist: action.payload.wishlist
-    }
+    case "LOAD_DATA": return {...state,data: action.payload.product};
+    case "LOAD_CART": return {...state, cart: action.payload.cart || []};
+    case "LOAD_WISHLIST": return {...state,wishlist: action.payload.wishlist || []};
     case "ADD_WISHLIST": return {...state, wishlist: action.payload.wishlist}
     case "ADD_CART": return {...state, cart: action.payload}
     case "COUPON_CANCEL": return {...state, selectedCoupons: ""};
     case "APPLY_COUPON": return {...state, selectedCoupons: action.payload};
     case "CLEAR_CART": return {...state, cart: []};
+    case "RESET": return {...state,
+      wishlist: [],
+      cart: [],
+      coupon: ["50% OFF:REPUBLIC_SALE", "10% OFF:NEW_USER"],
+      selectedCoupons: "" }
     default: return state;
   }
 }
@@ -81,22 +86,36 @@ export const BookProvider = ({children}) => {
     try {
       setLoading(true);
       const encodedToken = localStorage.getItem("token");
-      const allProduct = await fetch("/api/products").then(res => res.json());
-      const allCart = await fetch("/api/user/cart",{
-        method: "GET",
-        headers: {
-          "authorization": encodedToken,
-        },
-      }).then(res => res.json());
-      const allWishlist = await fetch("/api/user/wishlist", {
-        method: "GET",
-        headers: {
-          "authorization": encodedToken,
-        },
-      }).then(res => res.json())
-      dispatch({type: "LOAD_DATA", payload: {product: allProduct.products, cart: allCart.cart, wishlist: allWishlist.wishlist  }})
-      filterDispatch({type: "LOAD_DATA", payload: allProduct.products});
-      searchDispatch({type: "LOAD_DATA", payload: allProduct.products});
+      try {
+        const allProduct = await fetch("/api/products").then(res => res.json());
+        dispatch({type: "LOAD_DATA", payload: {product: allProduct.products}});
+        filterDispatch({type: "LOAD_DATA", payload: allProduct.products});
+        searchDispatch({type: "LOAD_DATA", payload: allProduct.products});
+      }catch(error) {
+        console.log(error);
+      }
+      try {
+        const allCart = await fetch("/api/user/cart",{
+          method: "GET",
+          headers: {
+            "authorization": encodedToken,
+          },
+        }).then(res => res.json());
+        dispatch({type: "LOAD_CART", payload: { cart: allCart.cart}});
+      }catch(error) {
+        console.log(error);
+      }
+      try {
+        const allWishlist = await fetch("/api/user/wishlist", {
+          method: "GET",
+          headers: {
+            "authorization": encodedToken,
+          },
+        }).then(res => res.json());
+        dispatch({type: "LOAD_WISHLIST", payload: { wishlist: allWishlist.wishlist  }});
+      }catch(error){
+        console.log(error);
+      }
       setLoading(false);
     } catch(e) {
       console.log(e);
@@ -105,7 +124,7 @@ export const BookProvider = ({children}) => {
 
   useEffect(() => {
     getProduct();
-  },[])
+  },[]);
 
   useEffect(() => {
     let filterData = state.data;

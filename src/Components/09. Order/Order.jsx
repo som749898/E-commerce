@@ -1,15 +1,15 @@
 import { useContext } from "react"
 
 import "./Order.css"
-import { OrderContext } from "../../Context/OrderContext"
+import { OrderContext } from "../../Context/OrderContext";
+import {EmptyCard} from "../04. EmptyCard/EmptyCard";
 
 export const Order = () => {
   const {orderState} = useContext(OrderContext);
-  console.log(orderState);
   return <div>
     <div className="profile-header">Order Details</div>
     {
-      orderState.order.map(item => <div className="summary profile-order">
+      orderState.order.length > 0 ? orderState.order.map(item => <div className="summary profile-order">
       <div className="summary-details">
         <div className="order-id"><span className="order-title">OrderID</span> - <span>{item.orderId}</span></div>
         <div><span className="order-title">PaymentID</span> - <span className="order-desc">{`pay_${item.paymentId}`}</span></div>
@@ -18,7 +18,7 @@ export const Order = () => {
         <div><span className="order-title">Phone Number</span> - <span className="order-desc">{item.address.mobileNo}</span></div>
       </div>
       <div>
-        <div className="">
+        <div>
             {
               item.orderCart.map(item => <div className="profile-cart">
               <div className="">
@@ -39,7 +39,7 @@ export const Order = () => {
             }
         </div>
       </div>
-    </div>)
+    </div>) : <EmptyCard text="Order"/>
     }
   </div>
 }

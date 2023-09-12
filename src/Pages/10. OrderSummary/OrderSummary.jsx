@@ -8,7 +8,6 @@ import { OrderContext } from "../../Context/OrderContext";
 export const OrderSummary = () => {
   const {orderState} = useContext(OrderContext);
   const recentOrder = orderState.order[orderState.order.length-1];
-  console.log("recent order", orderState);
   const date = new Date();
   return <div>
     <Header/>

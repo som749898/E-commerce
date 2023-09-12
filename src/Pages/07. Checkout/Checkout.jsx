@@ -11,10 +11,9 @@ import { OrderContext } from "../../Context/OrderContext";
 
 export const Checkout = () => {
   const {state, dispatch} = useContext(BookContext);
-  const {orderState, orderDispatch} = useContext(OrderContext);
+  const { orderDispatch} = useContext(OrderContext);
   const {addressState, addressDispatch} = useContext(AddressContext);
   const [addressModal, setAddressModal] = useState(false);
-  console.log("state", orderState);
 
   const checkClearCart = async () => {
     try {

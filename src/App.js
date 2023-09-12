@@ -12,6 +12,7 @@ import { Cart } from "./Pages/06. Cart/Cart";
 import {Checkout} from "./Pages/07. Checkout/Checkout";
 import { Profile } from "./Pages/09. Profile/Profile";
 import {OrderSummary} from "./Pages/10. OrderSummary/OrderSummary";
+import { RequireAuth } from "./Components/10. RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -24,10 +25,26 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/book/:id" element={<ProductDetail/>} />
-        <Route path="/wishlist" element={<WishList/>} />
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/checkout" element={<Checkout/>} />
-        <Route path="/profile" element={<Profile/>} />
+        <Route path="/wishlist" element={
+        <RequireAuth>
+          <WishList/>
+        </RequireAuth>
+        } />
+        <Route path="/cart" element={
+        <RequireAuth>
+          <Cart/>
+        </RequireAuth>
+        } />
+        <Route path="/checkout" element={
+        <RequireAuth>
+          <Checkout/>
+        </RequireAuth>
+        } />
+        <Route path="/profile" element={
+        <RequireAuth>
+          <Profile/>
+        </RequireAuth>
+        } />
         <Route path="/order/summary" element={<OrderSummary/>} />
       </Routes>
     </div>

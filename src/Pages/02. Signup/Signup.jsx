@@ -2,11 +2,15 @@ import {NavLink} from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
+import { useContext } from "react";
 
 import coverImage from "../../Images/06. signup.png";
 import "./Signup.css";
+import { LoginContext } from "../../Context/LoginContext";
 
 export const Signup = () => {
+  const {loginState} = useContext(LoginContext);
+
   const getToken = async () => {
     const credentials = {
       email: "adarshbalika@gmail.com",
@@ -56,13 +60,6 @@ export const Signup = () => {
           </label>
           <label className="signup-field">
             <div>Create a strong Password</div>
-            <div className="signup-input">
-              <input placeholder="*************" type="text" />
-              <FaKey className="signup-icon"/>
-            </div>
-          </label>
-          <label className="signup-field">
-            <div>Comfirm Password</div>
             <div className="signup-input">
               <input placeholder="*************" type="text" />
               <FaKey className="signup-icon"/>

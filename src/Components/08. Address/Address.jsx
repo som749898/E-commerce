@@ -7,7 +7,6 @@ import { AddressContext } from "../../Context/AddressContext";
 export const Address = () => {
   const {addressState, addressDispatch} = useContext(AddressContext);
   const [addressModal, setAddressModal] = useState(false);
-  console.log("address", addressState);
   return <div>
     <div className="profile-header">Address Information</div>
     <div className="checkout-address">
