@@ -1,7 +1,7 @@
 import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import { MdEmail } from "react-icons/md";
-import { FaKey } from "react-icons/fa";
-import { useContext } from "react";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { useContext, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 
 import coverImage from "../../Images/07. login.png";
@@ -11,15 +11,16 @@ import { BookContext } from "../../Context/BookContext";
 
 
 export const Login = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const {loginDispatch} = useContext(LoginContext);
+  const {loginState,loginDispatch} = useContext(LoginContext);
   const {dispatch} = useContext(BookContext);
 
   const getToken = async () => {
     const credentials = {
-      email: "adarshbalika@gmail.com",
-      password: "adarshbalika"
+      email: loginState.email,
+      password: loginState.password
     }
     try {
       const generateToken = await fetch("/api/auth/login", {
@@ -28,8 +29,8 @@ export const Login = () => {
       }).then(res => res.json())
       localStorage.setItem("token",generateToken.encodedToken);
       localStorage.setItem("info", JSON.stringify(generateToken.foundUser));
-      
-      await loadData();
+      loginDispatch({type: "RESET"});
+      generateToken.encodedToken ? await loadData() : toast.error('Incorrect Id or Password');
     } catch(e) {
       console.log(e)
     }
@@ -78,6 +79,25 @@ export const Login = () => {
     getToken();
   }
 
+  const testClick = async () => {
+    const credentials = {
+      email: "manishbiswal@gmail.com",
+      password: "password"
+    }
+    try {
+      const generateToken = await fetch("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify(credentials)
+      }).then(res => res.json())
+      localStorage.setItem("token",generateToken.encodedToken);
+      localStorage.setItem("info", JSON.stringify(generateToken.foundUser));
+      loginDispatch({type: "RESET"});
+      await loadData();
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   return <div className="signup">
     <div className="signup-img">
       <img className="login-img" src={coverImage} alt="cover" />
@@ -92,20 +112,25 @@ export const Login = () => {
           <label className="signup-field">
             <div>Email</div>
             <div className="signup-input">
-              <input placeholder="Enter your email address" type="text" />
-              <MdEmail className="signup-icon"/>
+              <input onChange={(e) => loginDispatch({type: "EMAIL", payload: e.target.value})} placeholder="Enter your email address" type="text" />
+              <MdEmail className="signup-icon test"/>
             </div>
           </label>
           <label className="signup-field">
             <div>Password</div>
             <div className="signup-input">
-              <input placeholder="Enter your password" type="text" />
-              <FaKey className="signup-icon"/>
+              <input onChange={(e) => loginDispatch({type: "PASSWORD", payload: e.target.value})} placeholder="Enter your password" type={isVisible ? "text" : "password"} />
+              {
+                isVisible ? <AiFillEye onClick={() => setIsVisible(false)} className="signup-icon password-btn"/> : <AiFillEyeInvisible onClick={() => setIsVisible(true)} className="signup-icon password-btn"/>
+              }
             </div>
           </label>
         </div>
-        <button className="sign-btn" onClick={handleClick}>Log in</button>
-        <div className="sign-account">Don't have an account? <NavLink to="/signup" className="signup-login">Sign Up</NavLink></div>
+        <div className="login-btn">
+          <button className="sign-btn" onClick={handleClick}>Log in</button>
+          <button className="test-btn" onClick={testClick}>Test Credentials</button>
+        </div>
+        <div className="sign-account">Don't have an account? <NavLink to="/signup" className="signup-login"><span onClick={() => loginDispatch({type: "RESET"})}>Sign Up</span></NavLink></div>
       </div>
     </div>
     <Toaster/>

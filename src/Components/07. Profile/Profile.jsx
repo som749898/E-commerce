@@ -13,6 +13,7 @@ export const ProfileInfo = () => {
   const clickHandler = () => {
     navigate("/");
     localStorage.removeItem('token');
+    localStorage.removeItem('info');
     loginDispatch({type: "LOGOUT"});
     dispatch({type: "RESET"});
   }

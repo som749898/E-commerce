@@ -6,6 +6,17 @@ const reducerFunction = (state, action) => {
   switch(action.type) {
     case "LOGIN": return {...state, isLogin: true};
     case "LOGOUT": return {...state, isLogin: false};
+    case "EMAIL": return {...state, email: action.payload};
+    case "PASSWORD": return {...state, password: action.payload};
+    case "FIRST_NAME": return {...state,firstName: action.payload};
+    case "LAST_NAME": return {...state, lastName: action.payload};
+    case "RESET": return {...state, 
+      firstName: "",
+      email: "",
+      lastName: "",
+      password: ""
+    }
+    case "TEST": return {...state, email: action.payload.email, password: action.payload.password};
     default: return state;
   }
 }
@@ -13,9 +24,9 @@ const reducerFunction = (state, action) => {
 export const LoginProvider = ({children}) => {
   const [loginState, loginDispatch] = useReducer(reducerFunction, {
     isLogin: false,
-    name: "",
+    firstName: "",
     email: "",
-    username: "",
+    lastName: "",
     password: ""
   })
   return <LoginContext.Provider value={{loginState, loginDispatch}}>
