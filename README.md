@@ -1,6 +1,6 @@
-# Project Title
+# BookBazaar
 
-Brief description of your project.
+A user-friendly e-commerce application for books. Buy, sell, or explore books of various genres, authors, and formats.
 
 ## Table of Contents
 
