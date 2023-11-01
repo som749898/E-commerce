@@ -17,10 +17,6 @@ Brief description of your project.
   - [Logout](#logout)
   - [Address Management](#address-management)
   - [Checkout](#checkout)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## User Stories
 
@@ -93,19 +89,3 @@ Brief description of your project.
 ### Checkout
 
 - Choose an address and proceed to checkout, displaying the order summary.
-
-## Getting Started
-
-Instructions on how to get started with your project. Include installation, setup, and any necessary dependencies.
-
-## Usage
-
-Provide details on how to use your project, including any specific commands, configurations, or steps to interact with the features and user stories.
-
-## Contributing
-
-Guidelines for others who want to contribute to your project, such as how to submit pull requests or report issues.
-
-## License
-
-This project is licensed under the [License Name](LICENSE).
